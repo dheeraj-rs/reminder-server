@@ -16,11 +16,7 @@ mongoose
   });
 
 app.use(
-  cors({
-    origin: process.env.LOCAL_HOST,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    credentials: true,
-  })
+  cors()
 );
 
 app.use(cookieParser());
