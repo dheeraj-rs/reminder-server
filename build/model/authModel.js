@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
-var bcrypt_1 = __importDefault(require("bcrypt"));
+var bcrypt = require('bcryptjs');
 var userSchema = new mongoose_1.default.Schema({
     email: {
         type: String,
@@ -64,11 +64,11 @@ userSchema.pre("save", function (next) {
         var salt, _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, bcrypt_1.default.genSalt()];
+                case 0: return [4 /*yield*/, bcrypt.genSalt()];
                 case 1:
                     salt = _b.sent();
                     _a = this;
-                    return [4 /*yield*/, bcrypt_1.default.hash(this.password, salt)];
+                    return [4 /*yield*/, bcrypt.hash(this.password, salt)];
                 case 2:
                     _a.password = _b.sent();
                     next();
@@ -86,7 +86,7 @@ userSchema.statics.login = function (email, password) {
                 case 1:
                     user = _a.sent();
                     if (!user) return [3 /*break*/, 3];
-                    return [4 /*yield*/, bcrypt_1.default.compare(password, user.password)];
+                    return [4 /*yield*/, bcrypt.compare(password, user.password)];
                 case 2:
                     auth = _a.sent();
                     if (auth) {

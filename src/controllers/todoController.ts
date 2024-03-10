@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import todoModel from "../model/todoModel";
 import { TaskData } from "../types/Type";
+const redis = require('./redis')
 
 export const addData = async (req: Request, res: Response): Promise<void> => {
   try {
