@@ -1,5 +1,5 @@
 import mongoose, { Model, Schema } from "mongoose";
-import bcrypt from "bcrypt";
+const bcrypt = require('bcryptjs');
 import { UserData, UserDetails } from "../types/Type";
 
 const userSchema: Schema<UserData, UserDetails> = new mongoose.Schema({
